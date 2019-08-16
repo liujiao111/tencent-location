@@ -27,9 +27,10 @@ def print_request_info():
     print("请求地址：" + str(request.path))
     print(session)
 
-    if path == "/login":
+    if path == "/login" or path == "/toregister" or path == "/register":
         print("success")
         return
+
     if not "username" in session:
         return render_template('login.html')
     else:
@@ -56,13 +57,19 @@ def login():
 def login_get():
     return render_template('login.html')
 
+@app.route('/toregister', methods=['GET'])
+def toregister():
+    return render_template('register.html')
 
-@app.route('/register', methods=['GET'])
+'''
+注册
+'''
+@app.route('/register', methods=['POST'])
 def register():
-    username = request.args.get("username")
-    password = request.args.get('password')
+    username = request.form.get("username")
+    password = request.form.get('password')
     user.adduser(username, password)
-    return render_template('login.html')
+    return render_template('login.html', username=username, password=password, tip='注册成功！')
 
 @app.route('/doData', methods=['POST'])
 def signin():
@@ -107,4 +114,4 @@ def signin():
     return send_from_directory(directory=os.getcwd(), filename=file_name, as_attachment=True, mimetype='application/octet-stream')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(config.host, config.port)
