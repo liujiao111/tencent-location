@@ -113,5 +113,15 @@ def signin():
 
     return send_from_directory(directory=os.getcwd(), filename=file_name, as_attachment=True, mimetype='application/octet-stream')
 
+
+'''
+/heatmap热力图可视化
+'''
+@app.route('/heatmap', methods=['GET'])
+def heatmap():
+    return render_template('heatmap/heatmap.html')
+
+
+
 if __name__ == '__main__':
     app.run(config.host, config.port)
