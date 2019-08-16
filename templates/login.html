@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+     <link rel="stylesheet" href=" {{url_for('static', filename='layui/css/layui.css')}}"  media="all">
+</head>
+<body>
+
+
+<form  style="width:80%;margin-left:280px;margin-top:100px;width:66%"  class="layui-form" action="/login" method="post">
+  <div class="layui-form-item">
+    <label class="layui-form-label">用户名：</label>
+    <div class="layui-input-block">
+      <input type="text" name="username" lay-verify="title" autocomplete="on" placeholder="" class="layui-input">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">密码：</label>
+    <div class="layui-input-block">
+      <input type="text" name="password" lay-verify="title" autocomplete="on" placeholder="" class="layui-input">
+    </div>
+  </div>
+
+
+  <div class="layui-form-item">
+    <button style="margin-left:50px;width:80%;margin-top:20px" class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="demo2">确定</button>
+    {% if message %}
+  <p style="color:red;margin-left:50px;">{{ message }}</p>
+  {% endif %}
+  </div>
+</form>
+</body>
+
+</html>

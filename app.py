@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,session
 
 import data
 
@@ -9,15 +9,60 @@ import config
 
 import os
 
-from flask import Flask, render_template, send_from_directory, send_file
+from datetime import timedelta
+
+from flask import Flask, render_template, send_from_directory, send_file,redirect
+
+import user
+
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = os.urandom(24)  # 设置为24位的字符,每次运行服务器都是不同的，所以服务器启动一次上次的session就清除。
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)  # 设置session的保存时间。
+
+@app.before_request
+def print_request_info():
+    path = str(request.path)
+    print("请求地址：" + str(request.path))
+    print(session)
+
+    if path == "/login":
+        print("success")
+        return
+    if not "username" in session:
+        return render_template('login.html')
+    else:
+        print("已经登录")
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
 
+'''
+登录
+'''
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if user.checkUser(username, password):
+        session['username'] = username
+        return render_template('index.html')
+    return render_template('login.html', message='用户名或密码错误，请联系917961898')
+
+@app.route('/login', methods=['GET'])
+def login_get():
+    return render_template('login.html')
+
+
+@app.route('/register', methods=['GET'])
+def register():
+    username = request.args.get("username")
+    password = request.args.get('password')
+    user.adduser(username, password)
+    return render_template('login.html')
 
 @app.route('/doData', methods=['POST'])
 def signin():
