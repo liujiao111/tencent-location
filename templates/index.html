@@ -44,6 +44,9 @@
 
   <div class="layui-form-item">
     <button style="margin-left:50px;width:80%;margin-top:20px" class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="demo2">确定</button>
+    {% if message %}
+  <p style="color:red;margin-left:150px;;height:30px;margin-top:20px">{{ message }}</p>
+  {% endif %}
   </div>
 </form>
 

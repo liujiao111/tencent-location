@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>POI数据爬取</title>
+		<link rel="stylesheet" href="../../static/layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="../../static/css/timeline.css" />
+		<script src="../../static/js/modernizr.custom.js"></script>
+		<script src="../../static/layui/layui.js"></script>
+	</head>
+
+	<ul class="layui-nav layui-bg-green">
+		<li class="layui-nav-item">
+			<a href="">首页</a>
+		</li>
+		<li style="margin-left:77%;" class="layui-nav-item layui-this">
+			<a href="">在线工具</a>
+		</li>
+		<li class="layui-nav-item">
+			<a href="">教程</a>
+		</li>
+		<!--<li class="layui-nav-item">
+	    <a href="javascript:;">解决方案</a>
+	    <dl class="layui-nav-child">
+	      <dd><a href="">移动模块</a></dd>
+	      <dd><a href="">后台模版</a></dd>
+	      <dd><a href="">电商平台</a></dd>
+	    </dl>
+	  </li>-->
+		<li class="layui-nav-item">
+			<a href="">联系我</a>
+		</li>
+	</ul>
+
+	<body style="margin-top: 0px;">
+
+		<div style="margin-top: 20px;margin-left: 100px;" class="layui-row layui-col-space20">
+			<div class="layui-col-md1">
+				<div class="grid-demo grid-demo-bg1"></div>
+			</div>
+
+			<div class="layui-col-md9">
+				<form style="margin-top:20px" class="layui-form" action="/poidata" method="post">
+					<div class="layui-form-item">
+						<label class="layui-form-label">城市：</label>
+						<div class="layui-input-block">
+							<input type="text" name="city" lay-verify="title" autocomplete="on" placeholder="例如：北京市" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">城市区划：</label>
+						<div class="layui-input-block">
+							<input type="text" name="area" lay-verify="title" autocomplete="on" placeholder="该城市拥有的区域，多个区域用英文逗号分隔：例如：朝阳区, 海淀区" class="layui-input">
+							选填，但是为了提高获取数据的完整性，建议填写
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">分类关键字：</label>
+						<div class="layui-input-block">
+							<input type="text" name="keyword" lay-verify="title" autocomplete="on" placeholder="例如：酒店" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">坐标系：</label>
+						<div style="margin-left: 30px;" class="layui-input-inline">
+					        <select name="coord" lay-verify="required" lay-search="">
+					          <option value="">直接选择或搜索选择</option>
+					          <option value="1">高德坐标系WGS84</option>
+					          <option value="2">WGS84坐标系</option>
+					          <option value="3">百度坐标系</option>
+					          
+					        </select>
+					      </div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">高德密钥：</label>
+						<div class="layui-input-block">
+							<input type="text" name="key" lay-verify="title" autocomplete="on" placeholder="" class="layui-input">
+						</div>
+						
+					</div>
+							<span style="margin-top: 20px;margin-left: 100px;">
+								建议自己去高德开放平台申请，地址：https://lbs.amap.com/dev/index，如果嫌麻烦，并且需要的数据量不多，可以加qq索要临时的密钥:917961898
+							</span>
+
+
+					<div class="layui-form-item">
+						<button style="margin-left:50px;width:80%;margin-top:20px" class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="demo2">确定</button> {% if message %}
+						<p style="color:red;margin-left:150px;;height:30px;margin-top:20px">{{ message }}</p>
+						{% endif %}
+					</div>
+				</form>
+
+				<div style="height:100px;margin-left:350px">
+					<a style="margin-top:30px;color:#33ABA0" href="/heatmap">你可能还需POI数据可视化工具？点击这里快速实现可视化</a>
+				</div>
+			</div>
+
+			<div class="layui-col-md2">
+				<div class="grid-demo"></div>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			layui.use('form', function(){
+				  var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+				  
+				  //……
+				  
+				  //但是，如果你的HTML是动态生成的，自动渲染就会失效
+				  //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+				  form.render();
+				});      
+
+			
+		</script>
+
+	</body>
+
+</html>

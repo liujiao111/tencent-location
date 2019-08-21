@@ -1,0 +1,364 @@
+项目名：${pageContext.request.contextPath}
+
+oracle数据库用户名:scott   密码：scott ，系统管理员：system orcl
+
+MySQL用户名：root  密码：root
+
+WIFI(特快)
+fineex fineex2006
+
+
+git：名字:liujiao   email：hgvghh@qq.com
+
+github账号：liujiao111 hgvghh@qq.com 密码：liujiao222
+
+greenplum社区账号: hgvghh@qq.com Liujiao123~
+
+学信网：17620722422  liujiao123
+
+前程无忧：13708466045@163.com  LIUJIAO123
+
+档案存放地址：宣威市人才服务中心(宣威市建设东街278号)
+
+apple id : gegelj@sina.cn  Lj917961898vg
+	hgvghh@qq.com  Hahaliujiao123
+
+shift+space：全角半角切换 shift加上 空格键
+
+12306 : hgvghh@qq.com liujiao123
+
+本机Linux登陆账号：liujiao 123456
+	root 123456
+本机Mysql登陆命令：mysql -uroot -p123456
+
+163邮箱：13708466045@163.com（m13708466045_1@163.com） liujiao  授权码：dly917961898
+
+阿里云邮箱： liujiaoali@aliyun.com  liujiao123
+
+微信开发平台： liujiaoali@aliyun.com liujiao123
+
+新浪邮箱   liujiaoccy@sina.com  liujiao123
+
+老缪邮箱：me in itcast have fun@foxmail.com
+
+eclipse neno 账号：hgvghh@qq.com liujiao123
+
+华为账号： 13126473870      Liujiao123
+
+华为云账号 liujiaohahaha liujiao123
+
+华为云服务器： liuj liujiao123A
+
+虚拟机账号：root Liujiao123
+
+网易云账号 liujiaohahaha liujiao123
+
+idea激活server：http://idea.liyang.io
+
+小米PIN
+liujiao917961898
+
+谷歌postman账号
+liujiaohahaha liujiao123
+
+谷歌账号：
+renrumo@gmail.com liujiao123 使用131手机注册
+
+谷歌邮件：renrumo@gmail.com
+
+CSDN账号：qq_34464926，密码Liujiao123_
+
+oracle账号  hgvghh@qq.com Liujiao123  
+
+/liuj/hadoop-2.6.5
+
+
+graphlab create注册账号:renrumo@gmail     Product key: FB6A-2471-CFA2-62CD-58DE-EB3F-44C7-44A6
+
+
+百度账号：13126473870 liujiao
+
+百度开发者账号：13708466045@163.com liujiao
+
+微信小程序平台账号：liuj@kingpointcn.com    liujiao123
+小程序AppleId：wx6248567f5ddce5b9
+AppSecret(小程序密钥) df19ef92395fa785b0e1fc1d18876881
+
+
+微软  hgvghh@qq.com liujiao123
+
+paypal账号：
+hgvghh@qq.com  liujiao123 
+
+alt+shift+r，修改变量名（同步其他地方修改）
+
+启动redis：./redis-server redis.conf
+启动zookeeper：./zkServer.sh start
+启动单机版solr服务：/usr/local/mysolr/tomcat/bin/startup.sh
+	访问地址：http://192.168.12.168:8080/solr
+
+
+1.使用1、jquery为表单设置value值:val(String value),获取表单的值使用val()方法。
+	如：$("#userId").val(id); alert("需要刪除的id為："+$("#userId").val());	
+	return "<a href='javascript:void(0)' onclick='deleteUser("+row.id+")' >删除</a> ";
+2010742、使用datagrid给后台带参数时JSON写法：queryParams:{"yycgdCustom.id":"${yycgdCustom.id}"}，
+
+2.同一个form表单需要提交到不同的action的做法：使用JS，$("#formId").
+3.解决浏览器找不到JS资源：在当前页的js代码中加这样一句：
+//@ sourceURL=cp_list.js(其中"//"要有，这里不是注释的意思。
+ cp_list.js是你给页面起的名字，可随意起。)
+4.SpringMVC使用时，ajax请求返回JSON数据时报错：Could not find acceptable representation，原因是没有开启注解的默认配置：
+	    <mvc:annotation-driven></mvc:annotation-driven>
+5.后台返回的JSON数据：[{"useranme":"name0","password":"0pass"},{"useranme":"name1","password":"1pass"}]
+	获取useranme的方式：data[0].useranme。有时候alert不好用，请使用console.log
+	
+6.注意：在JSP页面中定义JS方法时，不能把定义方法放到$(function(){})中，否则会报错：该方法未定义。
+7.SpringMVC在返回JSON数据时，必须加@ResponseBody注解，否则页面报404.
+8.查询数据库中某一个字段值为空的写法需要用字段名=''，如SELECT * FROM `sys_dept` where parent_dept_id = '';为null无数据显示
+9.聚合工程下创建的子工程不见了：解决：project-exploer视图的右上方最后有个向下的箭头，点开下拉的第一个选项修改为flat
+10.包装类Integer比较时，在-128(包括)到127(包括)之间，比较的是数值，返回true,而在其他范围区间，比较的是地址值，返回false。
+11.前端怪问题：页面是个button：<input type="button" id="saveApp" onClick="save()"
+					class="btn btn-default" value="确定" />
+			js：提示名称为空：openPopover("saveApp", "操作提示", "名称不能为空！");
+			但是没效果，奇怪的是把saveApp换个名字就可以。。。。。。。。。
+12.前端需要解析包含html标签的文本内容时，需要用jquery提供的html()方法。text()和val()方法是无效的。
+
+13.tt项目启动顺序：先启动service服务层，再启动web调用层，否则的话启动web层会报错说创建bean失败。、、
+
+14，
+
+
+	书读了会忘，那读书还有什么意义？
+	答：当我们还是个孩子时，我吃过很多食物，现在已经记不起来吃过
+	
+什么了，
+		但是可以肯定的是，它们中的一部分已经长成了我的骨头和肉。
+		
+		华东师大 ：  总的2.5年。学费2.5万 
+					初试 ： 英语1，数学2， 计算机学科专业基础综合
+					复试 ： 1.笔试：离散数学、操作系统(A组）；计算机网络、软件工程（B组）（A,B组试题任选一组）。《Computer Networks>(Fourth edition) Tanenbaum Andrew S,清华大学出版社（2004）;《实用操作系统概念》Silberschatz Abraham、Galvin Peter、Gagne Greg，北京：高等教育出版社（2001）;《Discrete Mathematics and Its Applications》 (Fifth Edition) Rosen Kenneth H，北京：机械工业出版社（2003）; 《软件工程：实践者之路（第五版）》（第一、二部分） Roger S.Pressman 著清华大学出版社(2001)。2.专业基础知识（机考+口试）。3.外语听力、口语测试。
+					
+					
+					计算机科学与软件工程学院 
+							
+2018 软件工程(083500) 全日制：75       ①101思想政治理论②201英语一③302数学二④408计算机学科专业基础综合
+
+
+
+		南京大学 ： 
+				总的2年。4W学费
+					17年316人报名。录取201人
+		华南理工大学：
+			17年报考167人，录取102人，53人是免推的。
+				2.5年，2W一年
+		东南大学 ： 
+				2年 共4W
+					17年报考148人，121人被录取，其中2人是免推
+					
+					肖秀荣 政治
+					
+	
+	公司宽带账号：liuj liujiao
+	
+	斯坦福大学matching learing :链接: https://pan.baidu.com/s/1pLIALD5 密码: j44j
+	
+	pip install keras
+	
+	网易云服务器：
+		SSH密钥：99b64c8ae9f54ab3afd0c37c2b449004
+		
+	阿里云centos:
+		root Liujiao123
+		远程连接登陆密码：790396
+		阿里云redis：
+			root Liujiao123
+			
+			var poiMarkerList = [];  //记录地图上的中心点标记
+			var bsMarkerList = [];  //记录地图上的基站点标记
+			
+			
+	自己的centos3:
+		root 123
+		##liuj Liujiao123
+	自己的ubuntu：
+	liuj 123456
+		ubuntu 123
+	CTRL+ALT+T弹出ubuntu终端
+	sudo su 切换到root目录
+
+	
+	val textFile = sc.textFile("file:///liuj/spark1.6.3/README.md")
+	
+	
+	
+	自己的centos ——64位：
+		root 123456
+		mysql 数据库 root 123456
+		
+	实验楼机子密码
+	shiyanlou 38351189
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	======================================================================KINGPOINT===================================================================================================
+	
+	
+	SVN：服务器地址：http://192.168.21.12:82/
+	账号：liuj  kingpoint
+
+邮箱地址：http://mail.kingpointcn.com:8080 
+邮箱账号：liuj@kingpointcn.com
+密码：KING\Q7F8A4S5B\
+
+OA账号：liuj
+OA内网网址：http://192.168.21.34:8088 
+OA外网网址：http://oa.kingpointcn.com/  
+密码：Kingpoint@1209
+
+公司安装Hive数据库的linux环境的IP地址：192.168.12.168
+Hive端口：10000
+账号密码：root  yyfwb123
+
+
+公司禅道
+http://192.168.30.136/zentao
+用户名 liujiao 密码123456
+
+公司GP
+IP：192.168.30.162
+
+公司部署项目的linux环境的IP地址：192.168.30.157
+账号密码： root yyfwb123
+
+teamviewer远程连接的账号密码:
+618111080       Qqt@3333        
+汕头测试库的系统登陆账号密码：
+xiaoweiji xiaoweiji!!
+
+远程登陆linux使用汕头安全运维平台-Citrix Access Platfom，登陆地址：http://10.245.245.55，账号是dwwujiaxin，密码是pass@word4
+然后secureCRT登陆linux，主机名：10.245.254.110，用户名：jdweb，密码是：ST.jdweb@2017
+
+汕头风控系统账号：
+_admin
+123
+
+阳江系统账号： 空间：yj2
+lixiaotian
+1
+访问地址：
+
+韶关移动数据共享平台  空间sg2
+admin
+admin
+访问地址：http://localhost:8080/hocquery_nsg/loginWs.jsp
+
+hadoop下载地址：http://apache.claz.org/hadoop/common/hadoop-2.6.4/
+
+可以进行作业数据的公共宽表:biee库_0  tb_d_userinfo_fgs
+
+linux上hive的地址：192.168.30.166 : 10000
+登陆到hive上执行sql代码的命令：
+	CDH2-1 : ~ # hive  
+	拷贝sql语句粘贴执行。
+
+131机器mysql数据库的连接参数：
+	192.168.30.131 root FWB123data_2015
+
+茂名oracle数据库
+	192.168.30.151
+	sid:orcl.site
+	username：c##hoc_mmF
+	password:123456
+ 茂名集团客户画像：
+	132
+	aabbcc
+气象局项目157上的原型图地址：
+	http://192.168.30.157:8788/shantou
+	
+数据结构面试视频：
+	https://pan.baidu.com/s/1o8SPE8i uid7
+
+linux下使用yum命令安装mysql教程地址：
+	http://www.linuxidc.com/Linux/2016-12/138442.htm
+	
+	吴恩达深度学习课后作业；
+	https://zhuanlan.zhihu.com/aiclass
+
+
+安装cygwin环境。163下载地址：http://mirrors.163.com/cygwin/
+
+http://192.168.22.75:8080/hocquery/base/index.html?ctx=%2Fhocquery
+
+
+
+
+珠海网维平台：
+	SVN地址： http://192.168.21.12:82/svn/yyfwb/数据服务部项目/珠海网络大数据挖掘分析平台项目（网维）/02【代码库】/01开发库/维表工具/dtms
+	前端开发参考的风格：广东省企业全息画像可视化系统
+		SVN地址：http://192.168.21.12:82/svn/yyfwb/数据服务部项目/珠海网络大数据挖掘分析平台项目（网维）/01【文档库】/03需求开发/广东省企业全息画像可视化系统
+	数据库：Oracle：IP：192.168.30.151 端口：1521 服务名：orcl.site，账号：C##DTMS ；密码：DTMS
+	建表名使用前缀：DTMS_   主键：使用名：ID，使用数据类型：varchar2（50）
+	代码生成器命令：${workspace_loc:/dtms}
+	登陆数据库密码：test 1
+	
+	珠海部署环境：
+		linux虚拟机连接参数：183.233.149.38:20381       jingdian        P@ssw0rd
+		访问地址：http://183.233.149.38:8097/dtms/frmIndex
+	
+	
+	谷歌安装axure插件：将axure-chrome-extension.crx文件拖到扩展程序的里面即可
+	
+	
+	解压密码：www.mukedaba.com
+	
+	
+	历史书；
+		1. 《轻松幽默侃唐朝1》 :主要讲述了从隋朝末年到唐朝初年这段时间内，各地起义的农民军领袖和趁势而起的朝廷官员为了争夺隋失之鹿，展开了一幕幕相互攻伐的战争史。本书以现代语言和符合现今读者阅读口味及习惯的叙述方式，向读者朋友展现那一段波澜壮阔的历史。
+
+		2. 上下五千年
+	技术：
+		1./
+		
+		
+		所谓礼貌， 就是见到的时候说你好，走的时候说再见。
+	
+	
+	微软学校账号： hgvghh@qq.com  Liujiao123,
+	九章算法：hgvghh@qq.com liujiao123
+	
+	亚马逊  -- 商城账号：hgvghh@qq.com   liujiao123
+	
+	亚马逊AWS云计算平台账号：hgvghh@qq.com   Liujiao123
+		AWS的ubuntu账号登陆：
+  ubuntu@18.179.5.125
+  
+  登陆后修改root用户的密码：
+	sudo passwd root
+	root  liujiao123
+	
+	然后切换root用户：su root ，然后输入root的密码
+	
+	windows使用ssh连接实例：
+		输入：ssh udacity@18.179.5.125
+		输入udacity的密码:udacity
+		
+
+powerdesigner入门指南：https://www.cnblogs.com/biehongli/p/6025954.html
+
+
+AWS连接：
+用户名：
+	公有IPV4：18.217.247.40
+	用户名：ec2-user 或 root
+	Connection-SHH-Auth：-》 Brower 选择生成的PPK密钥，然后打开
+		
+
+		
