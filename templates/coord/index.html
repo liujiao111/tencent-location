@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<link rel="shortcut icon"type="image/x-icon"href="../../static/image/map-icon.png" />
+		
+<link rel="stylesheet" href=" {{url_for('static', filename='layui/css/layui.css')}}"  media="all">
+<script src = "{{url_for('static', filename='layui/layui.js')}}" ></script>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   
+   <div id="page1"></div>
+
+	<ul class="layui-nav layui-bg-green">
+		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
+		</ul>
+
+
+
+   <body style="margin: 0;">
+   	
+
+   <div style="margin-top:10px;margin-left:40%">
+     请上传.xls格式的文件:
+       <button  type="button" class="layui-btn" id="test1">
+  <i class="layui-icon">&#xe67c;</i>上传文件
+</button>
+   </div>
+
+       <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+       <script type="text/javascript">
+       	
+       	
+
+       layui.use('upload', function(){
+  var upload = layui.upload;
+
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#test1' //绑定元素
+    ,url: '/upload?type=coord' //上传接口
+    ,accept: 'file'
+    ,done: function(res){
+      //上传完毕回调
+      filename = res['filename']
+      alert(filename)
+	  window.location.href="/download?filename=" + filename
+    }
+  });
+});
+
+
+
+       </script>
+   </body>
+</html>

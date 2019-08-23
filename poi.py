@@ -5,11 +5,14 @@ import xlwt
 from xpinyin import Pinyin
 import os
 from transCoordinateSystem import gcj02_to_wgs84, gcj02_to_bd09
+import xlrd
 
 # TODO 替换为上面申请的密钥
 amap_web_key = '9f27cbb8d65567505df8cae9dac49aa3'
 poi_search_url = "http://restapi.amap.com/v3/place/text"
 poi_boundary_url = "https://ditu.amap.com/detail/get/detail"
+
+poi_xingzheng_distrinct_url = "https://restapi.amap.com/v3/config/district?keywords=100000&subdistrict=3&key=4188efb67360681f89110ccdb11e563b"
 # from transCoordinateSystem import gcj02_to_wgs84
 
 
@@ -35,8 +38,8 @@ def write_to_excel(poilist, cityname, classfield, coord):
     sheet = book.add_sheet(classfield, cell_overwrite_ok=True)
 
     # 第一行(列标题)
-    sheet.write(0, 0, 'x')
-    sheet.write(0, 1, 'y')
+    sheet.write(0, 0, 'lon')
+    sheet.write(0, 1, 'lat')
     sheet.write(0, 2, 'name')
     sheet.write(0, 3, 'address')
     sheet.write(0, 4, 'pname')
@@ -128,3 +131,62 @@ def get_data(city, area, keyword, coord, key):
 
     return None
 
+
+
+
+
+
+def get_distrinct():
+    '''
+    获取中国城市行政区划
+    :return:
+    '''
+
+    data = ''
+    with request.urlopen(poi_xingzheng_distrinct_url) as f:
+        data = f.read()
+        data = data.decode('utf-8')
+    print(data)
+    return data
+
+
+
+
+
+
+
+def get_poi_map_data(filepath):
+    '''
+    读取PEXCEL格式的POI数据，转换为百度地图可视化需要的数据格式
+    :param filepath:
+    :return:
+    '''
+    workbook = xlrd.open_workbook(filename=filepath)
+    sheet_first = workbook.sheets()[0]
+
+    result = []
+    for i in range(1, sheet_first.nrows):
+        lon, lat, name = sheet_first.cell_value(i, 0), sheet_first.cell_value(i, 1), sheet_first.cell_value(i, 2)
+        ls = []
+        ls.append(lon)
+        ls.append(lat)
+        ls.append(name)
+        result.append(ls)
+    return result
+
+
+
+
+'''
+data = get_distrinct()
+data = json.loads(data)
+districts = data['districts'][0]['districts']
+i= 0
+for district in districts:
+    name = district['name']
+    adcode = district['adcode']
+    print('<option value="'+ adcode+'">'+name+'</option>')
+    i = i+ 1
+print(i)
+    #<option value="150000">内蒙古自治区</option>
+    '''

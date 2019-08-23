@@ -4,35 +4,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>POI数据爬取</title>
+		<link rel="shortcut icon"type="image/x-icon"href="../../static/image/map-icon.png" />
+		
 		<link rel="stylesheet" href="../../static/layui/css/layui.css" />
 		<link rel="stylesheet" type="text/css" href="../../static/css/timeline.css" />
 		<script src="../../static/js/modernizr.custom.js"></script>
 		<script src="../../static/layui/layui.js"></script>
+		<script type="text/javascript" src="../../static/js/jquery-3.4.1.min.js.js" ></script>
 	</head>
 
-	<ul class="layui-nav layui-bg-green">
-		<li class="layui-nav-item">
-			<a href="">首页</a>
-		</li>
-		<li style="margin-left:77%;" class="layui-nav-item layui-this">
-			<a href="">在线工具</a>
-		</li>
-		<li class="layui-nav-item">
-			<a href="">教程</a>
-		</li>
-		<!--<li class="layui-nav-item">
-	    <a href="javascript:;">解决方案</a>
-	    <dl class="layui-nav-child">
-	      <dd><a href="">移动模块</a></dd>
-	      <dd><a href="">后台模版</a></dd>
-	      <dd><a href="">电商平台</a></dd>
-	    </dl>
-	  </li>-->
-		<li class="layui-nav-item">
-			<a href="">联系我</a>
-		</li>
-	</ul>
-
+		 <ul class="layui-nav layui-bg-green">
+		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
+		</ul>
 	<body style="margin-top: 0px;">
 
 		<div style="margin-top: 20px;margin-left: 100px;" class="layui-row layui-col-space20">
@@ -42,14 +28,123 @@
 
 			<div class="layui-col-md9">
 				<form style="margin-top:20px" class="layui-form" action="/poidata" method="post">
-					<div class="layui-form-item">
+					<!--<div class="layui-form-item">
 						<label class="layui-form-label">城市：</label>
+						<div style="margin-left: 30px;float:left" class="layui-input-inline">
+					        <select onchange="changeProvince();" name="city" lay-verify="required" lay-search="">
+					            <option value="">直接选择或搜索选择</option>
+					            <option value="410000">河南省</option>
+								<option value="440000">广东省</option>
+								<option value="150000">内蒙古自治区</option>
+								<option value="230000">黑龙江省</option>
+								<option value="650000">新疆维吾尔自治区</option>
+								<option value="420000">湖北省</option>
+								<option value="210000">辽宁省</option>
+								<option value="370000">山东省</option>
+								<option value="320000">江苏省</option>
+								<option value="610000">陕西省</option>
+								<option value="310000">上海市</option>
+								<option value="520000">贵州省</option>
+								<option value="500000">重庆市</option>
+								<option value="540000">西藏自治区</option>
+								<option value="340000">安徽省</option>
+								<option value="350000">福建省</option>
+								<option value="430000">湖南省</option>
+								<option value="460000">海南省</option>
+								<option value="630000">青海省</option>
+								<option value="450000">广西壮族自治区</option>
+								<option value="640000">宁夏回族自治区</option>
+								<option value="360000">江西省</option>
+								<option value="330000">浙江省</option>
+								<option value="130000">河北省</option>
+								<option value="810000">香港特别行政区</option>
+								<option value="710000">台湾省</option>
+								<option value="820000">澳门特别行政区</option>
+								<option value="620000">甘肃省</option>
+								<option value="510000">四川省</option>
+								<option value="220000">吉林省</option>
+								<option value="120000">天津市</option>
+								<option value="530000">云南省</option>
+								<option value="110000">北京市</option>
+								<option value="140000">山西省</option>
+					          
+					        </select>
+					      </div>
+					</div>-->
+					
+					<!--<div class="layui-form-item">
+					    <label class="layui-form-label">联动选择框</label>
+					    <div class="layui-input-inline">
+					      <select onchange="changeProvince();" name="city" lay-verify="required" lay-search="">
+					            <option id= "selectCity" value="">直接选择或搜索选择</option>
+					            <option  value="">直接选择或搜索选择</option>
+					            <option selected="selected" value="410000">河南省</option>
+								<option value="440000">广东省</option>
+								<option value="150000">内蒙古自治区</option>
+								<option value="230000">黑龙江省</option>
+								<option value="650000">新疆维吾尔自治区</option>
+								<option value="420000">湖北省</option>
+								<option value="210000">辽宁省</option>
+								<option value="370000">山东省</option>
+								<option value="320000">江苏省</option>
+								<option value="610000">陕西省</option>
+								<option value="310000">上海市</option>
+								<option value="520000">贵州省</option>
+								<option value="500000">重庆市</option>
+								<option value="540000">西藏自治区</option>
+								<option value="340000">安徽省</option>
+								<option value="350000">福建省</option>
+								<option value="430000">湖南省</option>
+								<option value="460000">海南省</option>
+								<option value="630000">青海省</option>
+								<option value="450000">广西壮族自治区</option>
+								<option value="640000">宁夏回族自治区</option>
+								<option value="360000">江西省</option>
+								<option value="330000">浙江省</option>
+								<option value="130000">河北省</option>
+								<option value="810000">香港特别行政区</option>
+								<option value="710000">台湾省</option>
+								<option value="820000">澳门特别行政区</option>
+								<option value="620000">甘肃省</option>
+								<option value="510000">四川省</option>
+								<option value="220000">吉林省</option>
+								<option value="120000">天津市</option>
+								<option value="530000">云南省</option>
+								<option value="110000">北京市</option>
+								<option value="140000">山西省</option>
+					          
+					        </select>
+					    </div>
+					    <div class="layui-input-inline">
+					      <select name="quiz2">
+					        <option value="">请选择市</option>
+					        <option value="杭州">杭州</option>
+					        <option value="宁波" disabled="">宁波</option>
+					        <option value="温州">温州</option>
+					        <option value="温州">台州</option>
+					        <option value="温州">绍兴</option>
+					      </select>
+					    </div>
+					    <div class="layui-input-inline">
+					      <select name="quiz3">
+					        <option value="">请选择县/区</option>
+					        <option value="西湖区">西湖区</option>
+					        <option value="余杭区">余杭区</option>
+					        <option value="拱墅区">临安市</option>
+					      </select>
+					    </div>
+					    <div class="layui-form-mid layui-word-aux">此处只是演示联动排版，并未做联动交互</div>
+					  </div>-->
+					  
+					  <div class="layui-form-item">
+						<label class="layui-form-label">城市名：</label>
 						<div class="layui-input-block">
-							<input type="text" name="city" lay-verify="title" autocomplete="on" placeholder="例如：北京市" class="layui-input">
+							<input type="text" name="city" lay-verify="title" autocomplete="on" placeholder="例如：广州市" class="layui-input">
+
 						</div>
 					</div>
-					
-					<div class="layui-form-item">
+					  
+					  <div class="layui-form-item">
 						<label class="layui-form-label">城市区划：</label>
 						<div class="layui-input-block">
 							<input type="text" name="area" lay-verify="title" autocomplete="on" placeholder="该城市拥有的区域，多个区域用英文逗号分隔：例如：朝阳区, 海淀区" class="layui-input">
@@ -69,7 +164,7 @@
 						<div style="margin-left: 30px;" class="layui-input-inline">
 					        <select name="coord" lay-verify="required" lay-search="">
 					          <option value="">直接选择或搜索选择</option>
-					          <option value="1">高德坐标系WGS84</option>
+					          <option value="1">高德坐标系</option>
 					          <option value="2">WGS84坐标系</option>
 					          <option value="3">百度坐标系</option>
 					          
@@ -97,7 +192,7 @@
 				</form>
 
 				<div style="height:100px;margin-left:350px">
-					<a style="margin-top:30px;color:#33ABA0" href="/heatmap">你可能还需POI数据可视化工具？点击这里快速实现可视化</a>
+					<a style="margin-top:30px;color:#33ABA0" href="/poivisaul">你可能还需POI数据可视化工具？点击这里快速实现可视化</a>
 				</div>
 			</div>
 
@@ -116,8 +211,18 @@
 				  //但是，如果你的HTML是动态生成的，自动渲染就会失效
 				  //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
 				  form.render();
-				});      
+				});  
+				
+				$(function(){
 
+					$("#selectCity").change(function(){
+
+		     			//alert(1)
+		
+					})
+				})
+
+			
 			
 		</script>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-
+<link rel="shortcut icon"type="image/x-icon"href="../../static/image/map-icon.png" />
+		
 <link rel="stylesheet" href=" {{url_for('static', filename='layui/css/layui.css')}}"  media="all">
 <script src = "{{url_for('static', filename='layui/layui.js')}}" ></script>
 <html style="height: 100%">
@@ -7,10 +8,16 @@
        <meta charset="utf-8">
    </head>
 
+	 <ul class="layui-nav layui-bg-green">
+		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
+		</ul>
 
 
 
-   <body style="height: 80%; margin: 0;">
+   <body style="height: 100%; margin: 0;">
 
    <div style="margin-top:10px;margin-left:40%">
      请上传.cvs格式的文件:
@@ -43,7 +50,7 @@
   //执行实例
   var uploadInst = upload.render({
     elem: '#test1' //绑定元素
-    ,url: '/upload' //上传接口
+    ,url: '/upload?type=heatmap' //上传接口
     ,accept: 'file'
     ,done: function(res){
       //上传完毕回调

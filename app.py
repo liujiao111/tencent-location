@@ -176,12 +176,24 @@ def allowed_file(filename):
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        print('=======================', request.args.get('type'))
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             basepath = os.path.abspath(os.getcwd())  # 当前文件所在工作目录
             file.save(os.path.join(basepath + "/upload", filename))
-            mdata = get_map_data(basepath + "/upload" + "/" + filename)
+            if(request.args.get('type') == "heatmap") :
+                mdata = get_map_data(basepath + "/upload" + "/" + filename)
+            elif request.args.get('type') == "poi":
+                mdata = poi.get_poi_map_data(basepath + "/upload" + "/" + filename)
+            elif request.args.get('type') == "coord":
+                t = {}
+                t['filename'] =  "/upload" + "/" + filename
+                return json.dumps(t, ensure_ascii=False)
+                '''
+                return send_from_directory(directory=os.getcwd(), filename=basepath + "/upload" + "/" + filename, as_attachment=True,
+                                           mimetype='application/octet-stream')'''
+
             t = {}
             t['data'] = mdata
             #移除上传的文件
@@ -206,6 +218,14 @@ def to_poi_index():
     '''
     return render_template('poi/index.html')
 
+@app.route('/poivisaul', methods=['GET'])
+def to_poi_visual_page():
+    '''
+       跳转到POI数据可视化页面
+       :return:
+       '''
+    return render_template('poi/visual.html')
+
 
 # 获取POI数据
 @app.route('/poidata', methods=['POST'])
@@ -229,6 +249,27 @@ def get_poi_data():
     return send_from_directory(directory=os.getcwd(), filename=filename, as_attachment=True,
                                mimetype='application/octet-stream')
 
+
+
+@app.route('/coordpage', methods=['GET'])
+def to_coord_page():
+    '''
+       跳转到坐标转换页面
+       :return:
+       '''
+
+    return render_template('coord/index.html')
+
+@app.route('/download', methods=['GET'])
+def download_file():
+    '''
+    下载文件
+    :return:
+    '''
+    filename = request.args.get('filename')
+    print(filename)
+    return send_from_directory(directory=os.getcwd(), filename=filename, as_attachment=True,
+                               mimetype='application/octet-stream')
 
 if __name__ == '__main__':
     app.run(config.host, config.port)

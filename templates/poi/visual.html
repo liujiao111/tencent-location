@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="shortcut icon"type="image/x-icon"href="../../static/image/map-icon.png" />
+		
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">body,
+html,
+#allmap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+#l-map {
+	height: 100%;
+	width: 78%;
+	float: left;
+	border-right: 2px solid #bcbcbc;
+}
+
+#r-result {
+	height: 100%;
+	width: 20%;
+	float: left;
+}</style>
+	<link rel="stylesheet" href="../../static/layui/css/layui.css"  media="all">
+      <script src = "{{url_for('static', filename='layui/layui.js')}}" ></script>
+
+
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=99jC47pfOjXWm0umboUO0sz1EpoWi1rg"></script>
+	<title>添加多个标注点</title>
+</head>
+<body>
+	
+		 <ul class="layui-nav layui-bg-green">
+		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
+		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
+		</ul>
+	
+	
+	 <div style="margin-top:10px;margin-left:40%">
+    文件：
+       <button  type="button" class="layui-btn" id="test1">
+  <i class="layui-icon">&#xe67c;</i>上传csv文件
+</button>
+<br />
+<span>文件要求：请上传.xls格式的文件，并保证第一列为经度，第二列为纬度，第三列为名称，为了不产生坐标偏差，数据坐标需要为百度坐标系</span>
+   </div>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">// 百度地图API功能
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(116.404, 39.915);
+map.centerAndZoom(point, 15);
+
+map.enableScrollWheelZoom();
+
+// 编写自定义函数,创建标注
+function addMarker(point) {
+	var marker = new BMap.Marker(point);
+	map.addOverlay(marker);
+}
+
+for(var i = 0; i < 25; i++) {
+	var point = new BMap.Point(116.404, 39.915);
+	addMarker(point);
+}
+
+layui.use('upload', function() {
+	var upload = layui.upload;
+
+	//执行实例
+	var uploadInst = upload.render({
+		elem: '#test1' //绑定元素
+			,
+		url: '/upload?type=poi' //上传接口
+			,
+		accept: 'file',
+		done: function(res) {
+			//上传完毕回调
+			data = res['data']
+
+
+			// 百度地图API功能
+			var map = new BMap.Map("allmap");
+			var point = new BMap.Point(parseFloat(data[0][0]), parseFloat(data[0][1]));
+			map.centerAndZoom(point, 15);
+
+			map.enableScrollWheelZoom();
+
+			// 编写自定义函数,创建标注
+			function addMarker(point, name) {
+				var marker = new BMap.Marker(point);
+				map.addOverlay(marker);
+				var label = new BMap.Label(name,{offset:new BMap.Size(20,-10)});
+				marker.setLabel(label);
+				
+			}
+
+			for(i = 0; i < data.length; i++) {
+				lon = data[i][0]
+				lat = data[i][1]
+				name = data[i][2]
+
+				var point = new BMap.Point(parseFloat(lon), parseFloat(lat));
+				addMarker(point, name);
+				
+			}
+		}
+
+	});
+});</script>
