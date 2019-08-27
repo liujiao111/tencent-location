@@ -8,9 +8,8 @@ from heatmap import get_map_data
 import config
 import poi
 import os
-
+import coord
 from datetime import timedelta
-
 from flask import Flask, render_template, send_from_directory, send_file,redirect
 
 import user
@@ -186,9 +185,12 @@ def upload_file():
                 mdata = get_map_data(basepath + "/upload" + "/" + filename)
             elif request.args.get('type') == "poi":
                 mdata = poi.get_poi_map_data(basepath + "/upload" + "/" + filename)
-            elif request.args.get('type') == "coord":
+            elif request.args.get('type') == "coord":  #坐标转换上传
                 t = {}
-                t['filename'] =  "/upload" + "/" + filename
+
+
+
+                t['filename'] =  "upload" + "/" + filename
                 return json.dumps(t, ensure_ascii=False)
                 '''
                 return send_from_directory(directory=os.getcwd(), filename=basepath + "/upload" + "/" + filename, as_attachment=True,
@@ -231,19 +233,19 @@ def to_poi_visual_page():
 @app.route('/poidata', methods=['POST'])
 def get_poi_data():
     city = request.form.get('city')
-    area = request.form.get('area')
+    province = request.form.get('province')
     keyword = request.form.get('keyword')
     coord = request.form.get('coord')
     key = request.form.get('key')
-    if(city == None or city == ""):
-        return render_template('poi/index.html', message="城市不能为空")
+    if(province == None or province == ""):
+        return render_template('poi/index.html', message="城市或直辖市不能为空")
     if (keyword == None or keyword == ""):
         return render_template('poi/index.html', message="POI关键字不能为空")
     if (key == None or key == ""):
         return render_template('poi/index.html', message="密钥不能为空，如有需要请自行申请或者联系917961898获取")
 
-    print(city, area, keyword, coord, key)
-    filename = poi.get_data(city, area, keyword, coord, key)
+    print(province, city, keyword, coord, key)
+    filename = poi.get_data(province, city, keyword, coord, key)
     if filename == None:
         return render_template('poi/index.html', message="爬取失败")
     return send_from_directory(directory=os.getcwd(), filename=filename, as_attachment=True,
@@ -258,7 +260,31 @@ def to_coord_page():
        :return:
        '''
 
+
     return render_template('coord/index.html')
+
+
+@app.route('/poicoordtransform', methods=['POST'])
+def poicoordtransform():
+    '''
+       坐标转换
+       :return:
+       '''
+    orgcoord = request.form.get('orgcoord')
+    targetcoord = request.form.get('targetcoord')
+    filename = request.form.get('filename')
+
+    print(orgcoord, targetcoord, filename)
+
+    basepath = os.path.abspath(os.getcwd())  # 当前文件所在工作目录
+    new_file_name = coord.transfer(orgcoord, targetcoord, basepath + "/" + filename)
+
+    print('转换后的EXCEL地址：', os.getcwd(), new_file_name)
+
+    return send_from_directory(directory=os.getcwd(), filename=new_file_name, as_attachment=True,
+                               mimetype='application/octet-stream')
+
+
 
 @app.route('/download', methods=['GET'])
 def download_file():
@@ -266,10 +292,25 @@ def download_file():
     下载文件
     :return:
     '''
-    filename = request.args.get('filename')
-    print(filename)
-    return send_from_directory(directory=os.getcwd(), filename=filename, as_attachment=True,
+    file_name = request.args.get('filename')
+    print(file_name)
+
+    return send_from_directory(directory=os.getcwd(), filename=file_name, as_attachment=True,
                                mimetype='application/octet-stream')
+
+
+@app.route('/getSubdistrict', methods=['GET'])
+def getCitys():
+    '''
+    根据省编号获取城市数据
+    :return:
+    '''
+    code = request.args.get('code')
+    print(code)
+    data = poi.get_distrinct(code)
+    return data
+
+
 
 if __name__ == '__main__':
     app.run(config.host, config.port)

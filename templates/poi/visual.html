@@ -32,13 +32,22 @@ html,
 
 
 	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=99jC47pfOjXWm0umboUO0sz1EpoWi1rg"></script>
-	<title>添加多个标注点</title>
+	<title>POI在线可视化</title>
+	<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?40648ca14434a0597e16e638e1f0607b";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+			</script>
 </head>
 <body>
 	
 		 <ul class="layui-nav layui-bg-green">
-		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
-		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+		  <li class="layui-nav-item"><a href="http://www.mapboxx.cn/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://www.mapboxx.cn/">在线工具</a></li>
 		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
 		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
 		</ul>
@@ -47,7 +56,7 @@ html,
 	 <div style="margin-top:10px;margin-left:40%">
     文件：
        <button  type="button" class="layui-btn" id="test1">
-  <i class="layui-icon">&#xe67c;</i>上传csv文件
+  <i class="layui-icon">&#xe67c;</i>上传xls文件
 </button>
 <br />
 <span>文件要求：请上传.xls格式的文件，并保证第一列为经度，第二列为纬度，第三列为名称，为了不产生坐标偏差，数据坐标需要为百度坐标系</span>

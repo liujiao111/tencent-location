@@ -12,7 +12,7 @@ amap_web_key = '9f27cbb8d65567505df8cae9dac49aa3'
 poi_search_url = "http://restapi.amap.com/v3/place/text"
 poi_boundary_url = "https://ditu.amap.com/detail/get/detail"
 
-poi_xingzheng_distrinct_url = "https://restapi.amap.com/v3/config/district?keywords=100000&subdistrict=3&key=4188efb67360681f89110ccdb11e563b"
+poi_xingzheng_distrinct_url = "https://restapi.amap.com/v3/config/district?subdistrict=2&key=4188efb67360681f89110ccdb11e563b"
 # from transCoordinateSystem import gcj02_to_wgs84
 
 
@@ -106,10 +106,41 @@ def getpoi_page(cityname, keywords, page):
     return data
 
 
+def get_areas(code):
+    '''
+    获取城市的所有区域
+    :param code:
+    :return:
+    '''
+    data = get_distrinct(code)
+    data = json.loads(data)
+    districts = data['districts'][0]['districts']
+    i = 0
+    area = ""
+    for district in districts:
+        name = district['name']
+        adcode = district['adcode']
+        print('<option value="' + adcode + '">' + name + '</option>')
+        i = i + 1
+        area = area + "," + adcode
 
-def get_data(city, area, keyword, coord, key):
+    print(area)
+    print(str(area).strip(','))
+    return str(area).strip(',')
+
+
+def get_data(province, city, keyword, coord, key):
+    isNeedAreas = True
+    if(province == "820000" or province == "810000" or province == "500000" or province == "310000"
+     or province == "710000"):  #310000
+        area = province
+        isNeedAreas = False
+
+    #如果不是直辖市，需要获取城市的区域
+    if isNeedAreas:
+        area = get_areas(city)
+
     city = str(city)
-    area = str(area)
     coord = str(coord)
     key = str(key)
     amap_web_key = key
@@ -136,17 +167,16 @@ def get_data(city, area, keyword, coord, key):
 
 
 
-def get_distrinct():
+def get_distrinct(code):
     '''
     获取中国城市行政区划
     :return:
     '''
 
-    data = ''
-    with request.urlopen(poi_xingzheng_distrinct_url) as f:
+    with request.urlopen(poi_xingzheng_distrinct_url + "&keywords=" + code) as f:
         data = f.read()
         data = data.decode('utf-8')
-    print(data)
+    print(code, data)
     return data
 
 

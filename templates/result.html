@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="shortcut icon"type="image/x-icon"href="../static/image/map-icon.png" />
-		
+	<link rel="stylesheet" href=" {{url_for('static', filename='layui/css/layui.css')}}"  media="all">
+<script type="text/javascript" src="../static/js/jquery-3.4.1.min.js.js"></script>
+<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?40648ca14434a0597e16e638e1f0607b";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<title>结果提示</title>
 </head>
 <body>
 	
-	<ul class="layui-nav layui-bg-green">
-		  <li class="layui-nav-item"><a href="http://139.155.19.195/">首页</a></li>
-		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://139.155.19.195/">在线工具</a></li>
+<ul class="layui-nav layui-bg-green">
+		  <li class="layui-nav-item"><a href="http://www.mapboxx.cn/">首页</a></li>
+		  <li style="margin-left:70%;" class="layui-nav-item layui-this"><a href="http://www.mapboxx.cn/">在线工具</a></li>
 		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/">教程</a></li>
 		  <li class="layui-nav-item"><a href="https://liujiao111.github.io/about/">联系我</a></li>
 		</ul>
@@ -18,5 +29,9 @@
  {% if message %}
   <p style="color:green">{{ message }}</p>
   {% endif %}
+  
+
+  
+ 
 </body>
 </html>
